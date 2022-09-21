@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 457da69199876544684e376e6aa16d02, type: 3}
   m_Name: HealthPotion
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 7489963818767560760, guid: 098b3237e042d7548a8e8a3dffc9227e, type: 3}
   type: 0
   description: Magic healing liquid.
   healthAmount: 10
