@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc9de090d97fac74099a27dc465e5649, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1002925705576748981, guid: a9f5f50b125b0674fbe9c6987945df7a, type: 3}
+  ID: 0
+  spriteUI: {fileID: 2177018490394213437, guid: 83bf93558b0ec514a95bd6edcd67f7ac, type: 3}
   type: 1
   description: Sharp piece of metal for slashing and stabbing enemies!
-  attackBonus: 10
-  defenseBonus: 0
+  buffs:
+  - attribute: 2
+    value: 0
+    min: 2
+    max: 8

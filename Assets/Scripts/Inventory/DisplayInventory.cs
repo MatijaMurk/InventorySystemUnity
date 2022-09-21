@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class DisplayInventory : MonoBehaviour
 {
     public InventoryObject inventory;
-
+    public GameObject inventoryPrefab;
     [SerializeField]
     private RectTransform _contentPanel;
 
@@ -30,30 +30,35 @@ public class DisplayInventory : MonoBehaviour
 
     public void UpdateDisplay()
     {
-        for (int i = 0; i < inventory.items.Count; i++)
+        for (int i = 0; i < inventory.items.Items.Count; i++)
         {
-            if (inventoryObjects.ContainsKey(inventory.items[i]))
+            InventorySlot slot =inventory.items.Items[i]; 
+            if (inventoryObjects.ContainsKey(slot))
             {
-                inventoryObjects[inventory.items[i]].GetComponentInChildren<Text>().text = inventory.items[i].amount.ToString("n0");
+                inventoryObjects[slot].GetComponentInChildren<Text>().text = slot.amount.ToString("n0");
             }
             else
             {
-                var obj = Instantiate(inventory.items[i].item.prefab, Vector3.zero, Quaternion.identity, transform);
+                var obj = Instantiate(inventoryPrefab, Vector3.zero, Quaternion.identity, transform);
+                obj.transform.GetChild(0).GetComponentInChildren<Image>().sprite = inventory.database.GetItem[slot.item.ID].spriteUI;
                 obj.transform.SetParent(_contentPanel);
-                inventoryObjects.Add(inventory.items[i],obj);
+                obj.GetComponentInChildren<Text>().text = slot.amount.ToString("n0");
+                inventoryObjects.Add(slot, obj);
             }
 
         }
     }
     public void CreateDisplay()
     {
-        for (int i = 0; i < inventory.items.Count; i++)
+        for (int i = 0; i < inventory.items.Items.Count; i++)
         {
-            
-            var obj=Instantiate(inventory.items[i].item.prefab, Vector3.zero,Quaternion.identity,transform);
+            InventorySlot slot = inventory.items.Items[i];
+            var obj = Instantiate(inventoryPrefab, Vector3.zero, Quaternion.identity, transform);
+            obj.transform.GetChild(0).GetComponentInChildren<Image>().sprite = inventory.database.GetItem[slot.item.ID].spriteUI;
             obj.transform.SetParent(_contentPanel);
-            inventoryObjects.Add(inventory.items[i], obj);
-            
+            obj.GetComponentInChildren<Text>().text = slot.amount.ToString("n0");
+            inventoryObjects.Add(slot, obj);
+
         }
     }
 }

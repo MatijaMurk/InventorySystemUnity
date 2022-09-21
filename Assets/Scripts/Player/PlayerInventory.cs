@@ -8,10 +8,10 @@ public class PlayerInventory : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        var item= collision.GetComponent<Item>();
+        var item= collision.GetComponent<GroundItem>();
         if (item)
         {
-            inventory.AddItem(item.item, 1);
+            inventory.AddItem(new Item(item.item), 1);
             Destroy(collision.gameObject);
         }
     }
@@ -26,10 +26,14 @@ public class PlayerInventory : MonoBehaviour
         {
             inventory.Load();
         }
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            
+        }
     }
 
     private void OnApplicationQuit()
     {
-        inventory.items.Clear();
+        inventory.items.Items.Clear();
     }
 }
