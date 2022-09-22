@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc9de090d97fac74099a27dc465e5649, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 2
   spriteUI: {fileID: 2177018490394213437, guid: 83bf93558b0ec514a95bd6edcd67f7ac, type: 3}
   type: 1
   description: Sharp piece of metal for slashing and stabbing enemies!
   buffs:
-  - attribute: 2
+  - attribute: 3
     value: 0
-    min: 2
-    max: 8
+    min: 20
+    max: 35

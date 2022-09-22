@@ -5,21 +5,23 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DisplayInventory : MonoBehaviour
+public abstract class UserInterface : MonoBehaviour
 {
     public MouseItem mouseItem = new MouseItem();
     public InventoryObject inventory;
-    public GameObject inventoryPrefab;
-    [SerializeField]
-    private RectTransform _contentPanel;
+    
+    
+
+    protected Dictionary<GameObject, InventorySlot> _inventoryObjects = new Dictionary<GameObject, InventorySlot>();
 
 
-    Dictionary<GameObject,InventorySlot> inventoryObjects= new Dictionary<GameObject, InventorySlot>();
-
-  
 
     void Start()
     {
+        for(int i = 0; i < inventory.items.Items.Length; i++)
+        {
+            inventory.items.Items[i].parent = this;
+        }
         CreateInventorySlots();
     }
 
@@ -29,31 +31,11 @@ public class DisplayInventory : MonoBehaviour
         UpdateSlots();
     }
 
-    public void CreateInventorySlots()
-    {
-        inventoryObjects = new Dictionary<GameObject, InventorySlot>();
-        for (int i = 0; i < inventory.items.Items.Length; i++)
-        {
-            var obj = Instantiate(inventoryPrefab, Vector3.zero, Quaternion.identity, transform);
-            obj.transform.SetParent(_contentPanel);
-
-            AddEvent(obj, EventTriggerType.PointerEnter, delegate { OnEnter(obj); });
-            AddEvent(obj, EventTriggerType.PointerExit, delegate { OnExit(obj); });
-            AddEvent(obj, EventTriggerType.BeginDrag, delegate { OnDragStart(obj); });
-            AddEvent(obj, EventTriggerType.EndDrag, delegate { OnDragEnd(obj); });
-            AddEvent(obj, EventTriggerType.Drag, delegate { OnDrag(obj); });
-            
-
-
-
-            inventoryObjects.Add(obj, inventory.items.Items[i]);
-        }
-        
-
-    }
+    public abstract void CreateInventorySlots();
+  
     public void UpdateSlots()
     {
-        foreach (KeyValuePair<GameObject, InventorySlot> _slot in inventoryObjects)
+        foreach (KeyValuePair<GameObject, InventorySlot> _slot in _inventoryObjects)
         {
             if (_slot.Value.ID >= 0)
             {
@@ -70,8 +52,8 @@ public class DisplayInventory : MonoBehaviour
         }
     }
 
-    
-    private void AddEvent(GameObject obj, EventTriggerType type, UnityAction<BaseEventData> action)
+
+    protected void AddEvent(GameObject obj, EventTriggerType type, UnityAction<BaseEventData> action)
     {
         EventTrigger trigger = obj.GetComponent<EventTrigger>();
         var eventTrigger = new EventTrigger.Entry
@@ -85,12 +67,12 @@ public class DisplayInventory : MonoBehaviour
     public void OnEnter(GameObject obj)
     {
         mouseItem.hoverObj = obj;
-        if (inventoryObjects.ContainsKey(obj))
-            mouseItem.hoverItem = inventoryObjects[obj];
+        if (_inventoryObjects.ContainsKey(obj))
+            mouseItem.hoverItem = _inventoryObjects[obj];
     }
     public void OnExit(GameObject obj)
     {
-        
+
         mouseItem.hoverObj = null;
         mouseItem.hoverItem = null;
     }
@@ -100,24 +82,26 @@ public class DisplayInventory : MonoBehaviour
         var rt = mouseObject.AddComponent<RectTransform>();
         rt.sizeDelta = new Vector2(50, 50);
         mouseObject.transform.SetParent(transform.parent);
-        if (inventoryObjects[obj].ID >= 0)
+        if (_inventoryObjects[obj].ID >= 0)
         {
             var img = mouseObject.AddComponent<Image>();
-            img.sprite = inventory.database.GetItem[inventoryObjects[obj].ID].spriteUI;
+            img.sprite = inventory.database.GetItem[_inventoryObjects[obj].ID].spriteUI;
             img.raycastTarget = false;
         }
         mouseItem.obj = mouseObject;
-        mouseItem.item = inventoryObjects[obj];
+        mouseItem.item = _inventoryObjects[obj];
     }
     public void OnDragEnd(GameObject obj)
     {
+      
+
         if (mouseItem.hoverObj)
         {
-            inventory.MoveItem(inventoryObjects[obj], inventoryObjects[mouseItem.hoverObj]);
+            inventory.MoveItem(_inventoryObjects[obj],mouseItem.hoverItem.parent._inventoryObjects[mouseItem.hoverObj]);
         }
         else
         {
-            inventory.RemoveItem(inventoryObjects[obj].item);
+            inventory.RemoveItem(_inventoryObjects[obj].item);
         }
         Destroy(mouseItem.obj);
         mouseItem.item = null;
@@ -127,10 +111,10 @@ public class DisplayInventory : MonoBehaviour
         if (mouseItem.obj != null)
         {
             mouseItem.obj.GetComponent<RectTransform>().position = Input.mousePosition;
-        }   
+        }
     }
 
- 
+
     void OnDisable()
     {
         Destroy(mouseItem.obj);

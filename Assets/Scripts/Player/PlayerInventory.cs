@@ -5,13 +5,17 @@ using UnityEngine;
 public class PlayerInventory : MonoBehaviour
 {
     public InventoryObject inventory;
+    [SerializeField] private GameObject inventoryScreen;
+    [SerializeField] private GameObject equipScreen;
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        var item= collision.GetComponent<GroundItem>();
+        var item = collision.GetComponent<GroundItem>();
         if (item)
         {
-            inventory.AddItem(new Item(item.item), 1);
+            Item _item = new Item(item.item);
+            
+            inventory.AddItem(_item, 1);
             Destroy(collision.gameObject);
         }
     }
@@ -26,14 +30,32 @@ public class PlayerInventory : MonoBehaviour
         {
             inventory.Load();
         }
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.I)|| Input.GetKeyDown(KeyCode.Tab))
         {
-            
+            if (inventoryScreen.activeSelf)
+            {
+                inventoryScreen.SetActive(false);
+            }
+            else
+            {
+                inventoryScreen.SetActive(true);
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (equipScreen.activeSelf)
+            {
+                equipScreen.SetActive(false);
+            }
+            else
+            {
+                equipScreen.SetActive(true);
+            }
         }
     }
 
-    private void OnApplicationQuit()
+        private void OnApplicationQuit()
     {
-        inventory.items.Items.Clear();
+        inventory.items.Items = new InventorySlot[inventory.inventorySize];
     }
 }

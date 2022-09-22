@@ -5,26 +5,28 @@ using UnityEngine;
 public enum ItemType
 {
     Potion,
-    Equipment,
+    Helmet,
+    Chest,
+    Weapon,
+    Shield,
+    Boots,
     Default
 }
 
 public enum Attributes
 {
     Agility,
-    Magic,
-    Strength,
     Stamina,
-    Luck
+    Strength,
+    Intelligence
 }
-
 public abstract class ItemObject : ScriptableObject
 {
     public int ID;
     public Sprite spriteUI;
+    public bool stackable;
     public ItemType type;
-
-    [TextArea(20,25)]
+    [TextArea(15, 20)]
     public string description;
     public ItemBuff[] buffs;
 
@@ -38,25 +40,24 @@ public abstract class ItemObject : ScriptableObject
 [System.Serializable]
 public class Item
 {
-    public string name;
+    public string Name;
     public int ID;
     public ItemBuff[] buffs;
     public Item(ItemObject item)
     {
-        name=item.name;
-        ID=item.ID;
+        Name = item.name;
+        ID = item.ID;
         buffs = new ItemBuff[item.buffs.Length];
-        for(int i=0; i<buffs.Length; i++)
+        for (int i = 0; i < buffs.Length; i++)
         {
-            buffs[i]=new ItemBuff(item.buffs[i].min, item.buffs[i].max);
+            buffs[i] = new ItemBuff(item.buffs[i].min, item.buffs[i].max)
             {
-                buffs[i].attribute = item.buffs[i].attribute;
+                attribute = item.buffs[i].attribute
             };
-            
         }
     }
-
 }
+
 [System.Serializable]
 public class ItemBuff
 {
@@ -72,6 +73,6 @@ public class ItemBuff
     }
     public void GenerateValue()
     {
-        value=UnityEngine.Random.Range(min,max);    
+        value = UnityEngine.Random.Range(min, max);
     }
 }
