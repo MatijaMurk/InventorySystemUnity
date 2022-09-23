@@ -18,17 +18,21 @@ public enum Attributes
     Agility,
     Stamina,
     Strength,
+    Defence,
     Intelligence
+   
 }
-public abstract class ItemObject : ScriptableObject
+[CreateAssetMenu(fileName = "New Item", menuName = "Inventory System/Items/Item")]
+public class ItemObject : ScriptableObject
 {
-    public int ID;
+    
     public Sprite spriteUI;
     public bool stackable;
+    public int maxStack;
     public ItemType type;
     [TextArea(15, 20)]
     public string description;
-    public ItemBuff[] buffs;
+    public Item data = new Item();
 
     public Item CreateItem()
     {
@@ -41,25 +45,31 @@ public abstract class ItemObject : ScriptableObject
 public class Item
 {
     public string Name;
-    public int ID;
+    public int ID=-1;
     public ItemBuff[] buffs;
+
+    public Item()
+    {
+        Name = "";
+        ID = -1;
+    }
     public Item(ItemObject item)
     {
         Name = item.name;
-        ID = item.ID;
-        buffs = new ItemBuff[item.buffs.Length];
+        ID = item.data.ID;
+        buffs = new ItemBuff[item.data.buffs.Length];
         for (int i = 0; i < buffs.Length; i++)
         {
-            buffs[i] = new ItemBuff(item.buffs[i].min, item.buffs[i].max)
+            buffs[i] = new ItemBuff(item.data.buffs[i].min, item.data.buffs[i].max)
             {
-                attribute = item.buffs[i].attribute
+                attribute = item.data.buffs[i].attribute
             };
         }
     }
 }
 
 [System.Serializable]
-public class ItemBuff
+public class ItemBuff : IModifier
 {
     public Attributes attribute;
     public int value;
@@ -71,6 +81,12 @@ public class ItemBuff
         max = _max;
         GenerateValue();
     }
+
+    public void AddValue(ref int baseValue)
+    {
+        baseValue += value;
+    }
+
     public void GenerateValue()
     {
         value = UnityEngine.Random.Range(min, max);

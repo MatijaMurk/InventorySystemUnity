@@ -9,11 +9,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc9de090d97fac74099a27dc465e5649, type: 3}
+  m_Script: {fileID: 11500000, guid: 9806f031367449f4986f10da3fd5620e, type: 3}
   m_Name: Shield
   m_EditorClassIdentifier: 
-  ID: 0
-  spriteUI: {fileID: 0}
-  type: 1
+  spriteUI: {fileID: 6539532558383101501, guid: ba00d2cc9cfe3aa4dbabe584112b29a8, type: 3}
+  stackable: 0
+  type: 4
   description: 
-  buffs: []
+  data:
+    Name: Shield
+    ID: -1
+    buffs:
+    - attribute: 3
+      value: 0
+      min: 25
+      max: 35
+    - attribute: 2
+      value: 0
+      min: 2
+      max: 5

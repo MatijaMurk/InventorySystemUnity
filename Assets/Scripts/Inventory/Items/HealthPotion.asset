@@ -9,11 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 457da69199876544684e376e6aa16d02, type: 3}
+  m_Script: {fileID: 11500000, guid: 9806f031367449f4986f10da3fd5620e, type: 3}
   m_Name: HealthPotion
   m_EditorClassIdentifier: 
-  ID: 0
   spriteUI: {fileID: 6828423950733908299, guid: ba00d2cc9cfe3aa4dbabe584112b29a8, type: 3}
+  stackable: 1
+  maxStack: 4
   type: 0
-  description: asdasdasfasf
-  buffs: []
+  description: 
+  data:
+    Name: HealthPotion
+    ID: 1
+    buffs: []

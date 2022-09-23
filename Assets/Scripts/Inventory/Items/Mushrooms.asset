@@ -10,21 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9806f031367449f4986f10da3fd5620e, type: 3}
-  m_Name: Sword
+  m_Name: Mushrooms
   m_EditorClassIdentifier: 
-  spriteUI: {fileID: 2177018490394213437, guid: 83bf93558b0ec514a95bd6edcd67f7ac, type: 3}
-  stackable: 0
-  type: 3
+  spriteUI: {fileID: -8958939799521180034, guid: ba00d2cc9cfe3aa4dbabe584112b29a8, type: 3}
+  stackable: 1
+  type: 6
   description: 
   data:
-    Name: Metal Sword
+    Name: Mushrooms
     ID: -1
-    buffs:
-    - attribute: 2
-      value: 0
-      min: 15
-      max: 25
-    - attribute: 3
-      value: 0
-      min: 2
-      max: 5
+    buffs: []

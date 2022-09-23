@@ -10,10 +10,11 @@ public class DynamicInventory : UserInterface
     [SerializeField]
     private RectTransform _contentPanel;
 
+    
     public override void CreateInventorySlots()
     {
         _inventoryObjects = new Dictionary<GameObject, InventorySlot>();
-        for (int i = 0; i < inventory.items.Items.Length; i++)
+        for (int i = 0; i < inventory.GetItems.Length; i++)
         {
             var obj = Instantiate(inventoryPrefab, Vector3.zero, Quaternion.identity, transform);
             obj.transform.SetParent(_contentPanel);
@@ -21,13 +22,14 @@ public class DynamicInventory : UserInterface
             AddEvent(obj, EventTriggerType.PointerEnter, delegate { OnEnter(obj); });
             AddEvent(obj, EventTriggerType.PointerExit, delegate { OnExit(obj); });
             AddEvent(obj, EventTriggerType.BeginDrag, delegate { OnDragStart(obj); });
+
             AddEvent(obj, EventTriggerType.EndDrag, delegate { OnDragEnd(obj); });
             AddEvent(obj, EventTriggerType.Drag, delegate { OnDrag(obj); });
 
+            inventory.GetItems[i].slotDisplay = obj;
 
 
-
-            _inventoryObjects.Add(obj, inventory.items.Items[i]);
+            _inventoryObjects.Add(obj, inventory.GetItems[i]);
         }
 
 

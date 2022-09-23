@@ -9,15 +9,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc9de090d97fac74099a27dc465e5649, type: 3}
+  m_Script: {fileID: 11500000, guid: 9806f031367449f4986f10da3fd5620e, type: 3}
   m_Name: Helmet
   m_EditorClassIdentifier: 
-  ID: 3
   spriteUI: {fileID: 6970593767082407451, guid: 83bf93558b0ec514a95bd6edcd67f7ac, type: 3}
+  stackable: 0
   type: 1
-  description: afaefafaedfa
-  buffs:
-  - attribute: 3
-    value: 0
-    min: 10
-    max: 25
+  description: 
+  data:
+    Name: Helmet
+    ID: -1
+    buffs:
+    - attribute: 4
+      value: 0
+      min: 5
+      max: 15
+    - attribute: 3
+      value: 0
+      min: 10
+      max: 15

@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -8958939799521180034, guid: ba00d2cc9cfe3aa4dbabe584112b29a8, type: 3}
+    - target: {fileID: 1074777170581738078, guid: f5eaab55dba0b764bb65be08f9de8b63, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4999568762193784269, guid: f5eaab55dba0b764bb65be08f9de8b63, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -58,7 +62,7 @@ PrefabInstance:
     - target: {fileID: 5086259006587659454, guid: f5eaab55dba0b764bb65be08f9de8b63, type: 3}
       propertyPath: item
       value: 
-      objectReference: {fileID: 11400000, guid: be05d02bc4b8b234ab358d456afb8d4f, type: 2}
+      objectReference: {fileID: 11400000, guid: e52f47773d9640847b15e3bebc9e667c, type: 2}
     - target: {fileID: 5100329339417989583, guid: f5eaab55dba0b764bb65be08f9de8b63, type: 3}
       propertyPath: m_Name
       value: ItemShrooms
