@@ -15,6 +15,7 @@ MonoBehaviour:
   spriteUI: {fileID: 2177018490394213437, guid: 83bf93558b0ec514a95bd6edcd67f7ac, type: 3}
   stackable: 0
   maxStack: 0
+  permanentUsage: 0
   type: 3
   description: 
   data:
@@ -29,4 +30,4 @@ MonoBehaviour:
       value: 0
       min: 2
       max: 5
-    ItemPrefab: {fileID: 8459660105636668329, guid: 227051a8226f71a448423c55f7ab004d, type: 3}
+  ItemPrefab: {fileID: 8459660105636668329, guid: 227051a8226f71a448423c55f7ab004d, type: 3}

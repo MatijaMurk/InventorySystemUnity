@@ -34,6 +34,7 @@ public class ItemObject : ScriptableObject
     [TextArea(15, 20)]
     public string description;
     public Item data = new Item();
+    public GameObject ItemPrefab;
 
     public Item CreateItem()
     {
@@ -48,7 +49,9 @@ public class Item
     public string Name;
     public int ID=-1;
     public ItemBuff[] buffs;
-    public GameObject ItemPrefab;
+  
+    
+    
 
     public Item()
     {

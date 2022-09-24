@@ -13,7 +13,6 @@ public class PlayerModifications : MonoBehaviour
     [SerializeField] private Transform infoPanel;
     [SerializeField] private GameObject infoText;
     [SerializeField] private DisplayStats statsScreen;
-
     [SerializeField] private GroundItem[] itemsToSpawn;
     private int itemCounter=0;
 

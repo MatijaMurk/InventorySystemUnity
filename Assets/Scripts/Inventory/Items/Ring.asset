@@ -15,10 +15,11 @@ MonoBehaviour:
   spriteUI: {fileID: 5323435768210212266, guid: 83bf93558b0ec514a95bd6edcd67f7ac, type: 3}
   stackable: 0
   maxStack: 0
+  permanentUsage: 0
   type: 6
   description: 
   data:
     Name: Ring
     ID: 7
     buffs: []
-    ItemPrefab: {fileID: 1782932726925892923, guid: 48e69d7acd545f8499bb8ce0e4c373d6, type: 3}
+  ItemPrefab: {fileID: 1782932726925892923, guid: 48e69d7acd545f8499bb8ce0e4c373d6, type: 3}

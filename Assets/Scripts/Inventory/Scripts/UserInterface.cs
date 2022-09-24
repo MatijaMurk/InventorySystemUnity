@@ -13,7 +13,6 @@ public abstract class UserInterface : MonoBehaviour
     protected Dictionary<GameObject, InventorySlot> _inventoryObjects = new Dictionary<GameObject, InventorySlot>();
 
     public PlayerModifications player;
-  
  
     void Awake()
     {
@@ -33,13 +32,6 @@ public abstract class UserInterface : MonoBehaviour
         gameObject.SetActive(false);
 
     }
-
-    //private void Update()
-    //{
-    //    // _inventoryObjects.UpdateSlotDisplay();
-
-        
-    //}
 
 
     private void UpdateSlots(InventorySlot _slot)
@@ -93,11 +85,7 @@ public abstract class UserInterface : MonoBehaviour
         if (MouseInfo.itemInAir == null)
         {
             MouseInfo.itemInAir = CreateTempItem(obj);
-            //StartCoroutine(StartDrag());
         }
-       //else OnDragEnd(obj);
-        
-      
     }
     public GameObject CreateTempItem(GameObject obj)
     {
@@ -126,11 +114,11 @@ public abstract class UserInterface : MonoBehaviour
             Destroy(MouseInfo.itemInAir);
             if (MouseInfo.hoverInterface == null)
             {
-                if(_inventoryObjects[obj].ItemObject.data.ItemPrefab!=null)
+                if(_inventoryObjects[obj].ItemObject.ItemPrefab!=null)
                 {
                 for (int i = 0; i < _inventoryObjects[obj].amount; i++)
                     {
-                    Instantiate(_inventoryObjects[obj].ItemObject.data.ItemPrefab, MouseInfo.playerTransform.position + MouseInfo.playerTransform.right * -2f +MouseInfo.playerTransform.up*Random.Range(-2f,2f), Quaternion.identity);
+                    Instantiate(_inventoryObjects[obj].ItemObject.ItemPrefab, MouseInfo.playerTransform.position + MouseInfo.playerTransform.right * -2f +MouseInfo.playerTransform.up*Random.Range(-2f,2f), Quaternion.identity);
                     }
                 
                 }               
@@ -144,25 +132,8 @@ public abstract class UserInterface : MonoBehaviour
                 inventory.SwapItems(_inventoryObjects[obj], mouseHoverSlotData);
             }
 
-        //if (MouseInfo.hoveredSlot == null && MouseInfo.hoverInterface != null)
-        //{
-        //    if (inventory.AddItem(MouseInfo.hoverInterface._inventoryObjects[obj].item, _inventoryObjects[obj].amount)){
-        //        return;
-        //        //_inventoryObjects[obj].RemoveItem();
-        //    }
-        //}
+   
     }
-
-
-    //IEnumerator StartDrag()
-    //{
-    //    while (MouseInfo.itemInAir)
-    //    {
-    //        MouseInfo.itemInAir.GetComponent<RectTransform>().position = Input.mousePosition;
-    //        yield return null;
-    //    }
-        
-    //}
 
     void OnDisable()
     {
@@ -181,24 +152,3 @@ public static class MouseInfo
     public static Transform playerTransform;
 }
 
-//public static class ExtensionMethods
-//{
-//    public static void UpdateSlotDisplay(this Dictionary<GameObject, InventorySlot> _slotsOnInterface)
-//    {
-//        foreach (KeyValuePair<GameObject, InventorySlot> _slot in _slotsOnInterface)
-//        {
-//            if (_slot.Value.item.ID >= 0)
-//            {
-//                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = _slot.Value.ItemObject.spriteUI;
-//                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
-//                _slot.Key.GetComponentInChildren<Text>().text = _slot.Value.amount == 1 ? "" : _slot.Value.amount.ToString("n0");
-//            }
-//            else
-//            {
-//                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = null;
-//                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
-//                _slot.Key.GetComponentInChildren<Text>().text = "";
-//            }
-//        }
-//    }
-//}

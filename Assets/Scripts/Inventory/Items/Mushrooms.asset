@@ -15,10 +15,11 @@ MonoBehaviour:
   spriteUI: {fileID: -8958939799521180034, guid: ba00d2cc9cfe3aa4dbabe584112b29a8, type: 3}
   stackable: 1
   maxStack: 0
+  permanentUsage: 0
   type: 6
   description: 
   data:
     Name: Mushrooms
     ID: 0
     buffs: []
-    ItemPrefab: {fileID: 9005533177247188110, guid: 92125c6c07c619a43b5a0629159aa1d2, type: 3}
+  ItemPrefab: {fileID: 9005533177247188110, guid: 92125c6c07c619a43b5a0629159aa1d2, type: 3}

@@ -19,7 +19,7 @@ MonoBehaviour:
   type: 0
   description: 
   data:
-    Name: ' HealthPotion'
+    Name: ' Health Potion'
     ID: 1
     buffs: []
-    ItemPrefab: {fileID: 2606268772859726106, guid: 0becf604d38870e4ea20cb8d75914ce7, type: 3}
+  ItemPrefab: {fileID: 2606268772859726106, guid: 0becf604d38870e4ea20cb8d75914ce7, type: 3}

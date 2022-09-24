@@ -22,4 +22,4 @@ MonoBehaviour:
     Name: Carrot
     ID: -1
     buffs: []
-    ItemPrefab: {fileID: 1909110856265454325, guid: 84f0a97ed20045c4e9676fd36c777542, type: 3}
+  ItemPrefab: {fileID: 1909110856265454325, guid: 84f0a97ed20045c4e9676fd36c777542, type: 3}

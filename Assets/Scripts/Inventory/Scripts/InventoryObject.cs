@@ -82,8 +82,6 @@ public class InventoryObject : ScriptableObject
             }
         }
     }
-
-
     public int EmptySlotCount
     {
         get
@@ -141,16 +139,7 @@ public class InventoryObject : ScriptableObject
             item1.UpdateSlot(temp.item, temp.amount);
         }
     }
-    public void RemoveItem(Item _item)
-    {
-        for (int i = 0; i < ItemContainer.Items.Length; i++)
-        {
-            if (ItemContainer.Items[i].item == _item)
-            {
-                ItemContainer.Items[i].UpdateSlot( null, 0);
-            }
-        }
-    }
+ 
     [ContextMenu("Save")]
     public void Save()
     {
@@ -203,6 +192,7 @@ public class Inventory
     }
 }
 public delegate void SlotUpdated(InventorySlot _slot);
+
 [System.Serializable]
 public class InventorySlot
 {
@@ -215,11 +205,10 @@ public class InventorySlot
     public SlotUpdated OnAfterUpdate;
     [System.NonSerialized]
     public SlotUpdated OnBeforeUpdate;
+
     public Item item = new Item();
     public int amount;
-
-    public PlayerModifications player;
-
+   
     public ItemObject ItemObject
     {
         get
@@ -231,8 +220,7 @@ public class InventorySlot
             return null;
         }
     }
-  
-
+ 
     public InventorySlot()
     {
         UpdateSlot(new Item(), 0);
