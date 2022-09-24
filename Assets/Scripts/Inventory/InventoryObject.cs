@@ -22,6 +22,8 @@ public class InventoryObject : ScriptableObject
     public InterfaceType type;
     public Inventory ItemContainer;
     public int inventorySize=12;
+    
+   
     public InventorySlot[] GetItems { get { return ItemContainer.Items; } }
 
 
@@ -32,45 +34,53 @@ public class InventoryObject : ScriptableObject
 
     public bool AddItem(Item _item, int _amount)
     {
-
-        if (EmptySlotCount <= 0)
+        if (database.Items[_item.ID].permanentUsage)
         {
-          
-                InventorySlot slot = FindItemOnInventory(_item);
-                if (database.Items[_item.ID].stackable&&slot!=null)
-                {
-                    if (database.Items[_item.ID].maxStack > 0){
-                        if (database.Items[_item.ID].maxStack > slot.amount)
-                        {
-                        slot.AddAmount(_amount);
-                        return true;
-                        }
-                    }   
-                    else
-                    {
-                    slot.AddAmount(_amount);
-                    return true;
-                    }
-                   return false;
-                }
-                else
-                    return false;         
+            Debug.Log(database.Items[_item.ID].name + " applied");
+            return true;
         }
-
         else
         {
-            InventorySlot slot = FindItemOnInventory(_item);
+            if (EmptySlotCount <= 0)
+            {
 
-            if (!database.Items[_item.ID].stackable || slot == null )
-               {
+                InventorySlot slot = FindItemOnInventory(_item);
+                if (database.Items[_item.ID].stackable && slot != null)
+                {
+                    if (database.Items[_item.ID].maxStack > 0)
+                    {
+                        if (database.Items[_item.ID].maxStack > slot.amount)
+                        {
+                            slot.AddAmount(_amount);
+                            return true;
+                        }
+                    }
+                    else
+                    {
+                        slot.AddAmount(_amount);
+                        return true;
+                    }
+                    return false;
+                }
+                else
+                    return false;
+            }
+
+            else
+            {
+                InventorySlot slot = FindItemOnInventory(_item);
+
+                if (!database.Items[_item.ID].stackable || slot == null)
+                {
+
                     SetEmptySlot(_item, _amount);
                     return true;
-               }
-      
+                }
+
                 slot.AddAmount(_amount);
                 return true;
+            }
         }
-
     }
 
 
@@ -94,7 +104,7 @@ public class InventoryObject : ScriptableObject
         for (int i = 0; i < GetItems.Length; i++)
         {
            
-            if (GetItems[i].item.ID == _item.ID )
+            if (GetItems[i].item.ID == _item.ID)
             {
                 if (GetItems[i].ItemObject.maxStack > 0)
                 {
@@ -118,7 +128,6 @@ public class InventoryObject : ScriptableObject
                 return GetItems[i];
             }
         }
-        //set up functionality for full inventory
         return null;
     }
     public void SwapItems(InventorySlot item1, InventorySlot item2)
@@ -209,6 +218,8 @@ public class InventorySlot
     public Item item = new Item();
     public int amount;
 
+    public PlayerModifications player;
+
     public ItemObject ItemObject
     {
         get
@@ -220,6 +231,7 @@ public class InventorySlot
             return null;
         }
     }
+  
 
     public InventorySlot()
     {
@@ -241,7 +253,9 @@ public class InventorySlot
     public void RemoveItem()
     {
         UpdateSlot(new Item(), 0);
+        
     }
+   
     public void AddAmount(int value)
     {
         UpdateSlot(item, amount += value);

@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteUI: {fileID: 6970593767082407451, guid: 83bf93558b0ec514a95bd6edcd67f7ac, type: 3}
   stackable: 0
+  maxStack: 0
   type: 1
   description: 
   data:
     Name: Helmet
-    ID: -1
+    ID: 4
     buffs:
     - attribute: 4
       value: 0
@@ -28,3 +29,4 @@ MonoBehaviour:
       value: 0
       min: 10
       max: 15
+    ItemPrefab: {fileID: 2074036767985020194, guid: cbf4edb469756d244a55a32fa665b3cc, type: 3}

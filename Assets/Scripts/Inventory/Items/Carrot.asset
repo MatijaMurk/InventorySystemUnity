@@ -10,15 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9806f031367449f4986f10da3fd5620e, type: 3}
-  m_Name: Mushrooms
+  m_Name: Carrot
   m_EditorClassIdentifier: 
-  spriteUI: {fileID: -8958939799521180034, guid: ba00d2cc9cfe3aa4dbabe584112b29a8, type: 3}
-  stackable: 1
+  spriteUI: {fileID: 8842549721199999897, guid: ba00d2cc9cfe3aa4dbabe584112b29a8, type: 3}
+  stackable: 0
   maxStack: 0
+  permanentUsage: 1
   type: 6
   description: 
   data:
-    Name: Mushrooms
-    ID: 0
+    Name: Carrot
+    ID: -1
     buffs: []
-    ItemPrefab: {fileID: 9005533177247188110, guid: 92125c6c07c619a43b5a0629159aa1d2, type: 3}
+    ItemPrefab: {fileID: 1909110856265454325, guid: 84f0a97ed20045c4e9676fd36c777542, type: 3}

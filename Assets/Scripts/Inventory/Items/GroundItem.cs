@@ -7,6 +7,9 @@ public class GroundItem : MonoBehaviour, ISerializationCallbackReceiver
 {
     public ItemObject item;
 
+
+    
+
     public void OnAfterDeserialize()
     {
         

@@ -15,9 +15,11 @@ MonoBehaviour:
   spriteUI: {fileID: 6828423950733908299, guid: ba00d2cc9cfe3aa4dbabe584112b29a8, type: 3}
   stackable: 1
   maxStack: 4
+  permanentUsage: 0
   type: 0
   description: 
   data:
-    Name: HealthPotion
+    Name: ' HealthPotion'
     ID: 1
     buffs: []
+    ItemPrefab: {fileID: 2606268772859726106, guid: 0becf604d38870e4ea20cb8d75914ce7, type: 3}

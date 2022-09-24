@@ -10,17 +10,23 @@ public class PlayerModifications : MonoBehaviour
     public InventoryObject equipment;
     [SerializeField] private GameObject inventoryScreen;
     [SerializeField] private GameObject equipScreen;
+    [SerializeField] private Transform infoPanel;
+    [SerializeField] private GameObject infoText;
     [SerializeField] private DisplayStats statsScreen;
 
     [SerializeField] private GroundItem[] itemsToSpawn;
     private int itemCounter=0;
-   
+
+    
+    
 
     public Attribute[] attributes;
 
 
+  
     private void Start()
-    {
+    { 
+        
         for (int i = 0; i < attributes.Length; i++)
         {
             attributes[i].SetParent(this);
@@ -99,14 +105,21 @@ public class PlayerModifications : MonoBehaviour
         if (item)
         {
             Item _item = new Item(item.item);
-
+            
             if (inventory.AddItem(_item, 1))
             {
                 Destroy(collision.gameObject);
+                var _tempInfo=Instantiate(infoText);
+                _tempInfo.GetComponentInChildren<Text>().text = string.Concat("Picked up " + _item.Name);
+                Debug.Log("Picked up " + _item.Name);
+                _tempInfo.transform.SetParent(infoPanel,false);
+                var animator = _tempInfo.GetComponent<Animator>();
+                animator.enabled = true;
+                animator.SetTrigger("Play");
             }
         }
     }
-
+ 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Q))
@@ -160,30 +173,38 @@ public class PlayerModifications : MonoBehaviour
 
     public void SpawnItems()
     {
-        
+        float radius = 2f;
         if (itemCounter < itemsToSpawn.Length)
         {
-            var item = Instantiate(itemsToSpawn[itemCounter], new Vector3(transform.position.x+ 3, transform.position.y-2, transform.position.z), Quaternion.identity);
-
+            float angle = itemCounter * Mathf.PI * 2f / itemsToSpawn.Length;
+            Vector3 newPos = new Vector3(transform.position.x+Mathf.Cos(angle) * radius, transform.position.y+Mathf.Sin(angle) * radius, transform.position.z );
+            Instantiate(itemsToSpawn[itemCounter],newPos, Quaternion.identity);
             itemCounter++;
         }
         else
         {
+            float angle = itemCounter * Mathf.PI * 2f / itemsToSpawn.Length;
+            Vector3 newPos = new Vector3(transform.position.x + Mathf.Cos(angle) * radius, transform.position.y + Mathf.Sin(angle) * radius, transform.position.z);
             itemCounter = 0;
-            var item = Instantiate(itemsToSpawn[itemCounter], new Vector3(transform.position.x + 3, transform.position.y - 2, transform.position.z), Quaternion.identity);
+            Instantiate(itemsToSpawn[itemCounter], newPos, Quaternion.identity);
             itemCounter++;
         }
-       
-
     }
+
+ 
     public void AttributeModified(Attribute attribute)
     {
         
         
         //Debug.Log(string.Concat(attribute.type, " was updated! Value is now ", attribute.value.ModifiedValue));
     }
+    private void OnApplicationQuit()
+    {
+        inventory.Clear();
+        equipment.Clear();
+    }
 
-  
+
 }
 [System.Serializable]
 public class Attribute

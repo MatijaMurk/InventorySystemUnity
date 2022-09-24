@@ -29,6 +29,7 @@ public class ItemObject : ScriptableObject
     public Sprite spriteUI;
     public bool stackable;
     public int maxStack;
+    public bool permanentUsage;
     public ItemType type;
     [TextArea(15, 20)]
     public string description;
@@ -47,6 +48,7 @@ public class Item
     public string Name;
     public int ID=-1;
     public ItemBuff[] buffs;
+    public GameObject ItemPrefab;
 
     public Item()
     {

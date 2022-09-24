@@ -22,143 +22,255 @@ MonoBehaviour:
         Name: 
         ID: -1
         buffs: []
+        ItemPrefab: {fileID: 0}
       amount: 0
+      player: {fileID: 0}
     - AllowedItems: 
       item:
         Name: 
         ID: -1
         buffs: []
+        ItemPrefab: {fileID: 0}
       amount: 0
+      player: {fileID: 0}
     - AllowedItems: 
       item:
         Name: 
         ID: -1
         buffs: []
+        ItemPrefab: {fileID: 0}
       amount: 0
+      player: {fileID: 0}
     - AllowedItems: 
       item:
         Name: 
         ID: -1
         buffs: []
+        ItemPrefab: {fileID: 0}
       amount: 0
+      player: {fileID: 0}
     - AllowedItems: 
       item:
         Name: 
         ID: -1
         buffs: []
+        ItemPrefab: {fileID: 0}
       amount: 0
+      player: {fileID: 0}
     - AllowedItems: 
       item:
         Name: 
         ID: -1
         buffs: []
+        ItemPrefab: {fileID: 0}
       amount: 0
+      player: {fileID: 0}
     - AllowedItems: 
       item:
         Name: 
         ID: -1
         buffs: []
+        ItemPrefab: {fileID: 0}
       amount: 0
+      player: {fileID: 0}
     - AllowedItems: 
       item:
         Name: 
         ID: -1
         buffs: []
+        ItemPrefab: {fileID: 0}
       amount: 0
+      player: {fileID: 0}
     - AllowedItems: 
       item:
         Name: 
         ID: -1
         buffs: []
+        ItemPrefab: {fileID: 0}
       amount: 0
+      player: {fileID: 0}
     - AllowedItems: 
       item:
         Name: 
         ID: -1
         buffs: []
+        ItemPrefab: {fileID: 0}
       amount: 0
+      player: {fileID: 0}
     - AllowedItems: 
       item:
         Name: 
         ID: -1
         buffs: []
+        ItemPrefab: {fileID: 0}
       amount: 0
+      player: {fileID: 0}
     - AllowedItems: 
       item:
         Name: 
         ID: -1
         buffs: []
+        ItemPrefab: {fileID: 0}
       amount: 0
+      player: {fileID: 0}
     - AllowedItems: 
       item:
         Name: 
         ID: -1
         buffs: []
+        ItemPrefab: {fileID: 0}
       amount: 0
+      player: {fileID: 0}
     - AllowedItems: 
       item:
         Name: 
         ID: -1
         buffs: []
+        ItemPrefab: {fileID: 0}
       amount: 0
+      player: {fileID: 0}
     - AllowedItems: 
       item:
         Name: 
         ID: -1
         buffs: []
+        ItemPrefab: {fileID: 0}
       amount: 0
+      player: {fileID: 0}
     - AllowedItems: 
       item:
         Name: 
         ID: -1
         buffs: []
+        ItemPrefab: {fileID: 0}
       amount: 0
+      player: {fileID: 0}
     - AllowedItems: 
       item:
         Name: 
         ID: -1
         buffs: []
+        ItemPrefab: {fileID: 0}
       amount: 0
+      player: {fileID: 0}
     - AllowedItems: 
       item:
         Name: 
         ID: -1
         buffs: []
+        ItemPrefab: {fileID: 0}
       amount: 0
+      player: {fileID: 0}
     - AllowedItems: 
       item:
         Name: 
         ID: -1
         buffs: []
+        ItemPrefab: {fileID: 0}
       amount: 0
+      player: {fileID: 0}
     - AllowedItems: 
       item:
         Name: 
         ID: -1
         buffs: []
+        ItemPrefab: {fileID: 0}
       amount: 0
+      player: {fileID: 0}
     - AllowedItems: 
       item:
         Name: 
         ID: -1
         buffs: []
+        ItemPrefab: {fileID: 0}
       amount: 0
+      player: {fileID: 0}
     - AllowedItems: 
       item:
         Name: 
         ID: -1
         buffs: []
+        ItemPrefab: {fileID: 0}
       amount: 0
+      player: {fileID: 0}
     - AllowedItems: 
       item:
         Name: 
         ID: -1
         buffs: []
+        ItemPrefab: {fileID: 0}
       amount: 0
+      player: {fileID: 0}
     - AllowedItems: 
       item:
         Name: 
         ID: -1
         buffs: []
+        ItemPrefab: {fileID: 0}
       amount: 0
-  inventorySize: 5
+      player: {fileID: 0}
+    - AllowedItems: 
+      item:
+        Name: 
+        ID: -1
+        buffs: []
+        ItemPrefab: {fileID: 0}
+      amount: 0
+      player: {fileID: 0}
+    - AllowedItems: 
+      item:
+        Name: 
+        ID: -1
+        buffs: []
+        ItemPrefab: {fileID: 0}
+      amount: 0
+      player: {fileID: 0}
+    - AllowedItems: 
+      item:
+        Name: 
+        ID: -1
+        buffs: []
+        ItemPrefab: {fileID: 0}
+      amount: 0
+      player: {fileID: 0}
+    - AllowedItems: 
+      item:
+        Name: 
+        ID: -1
+        buffs: []
+        ItemPrefab: {fileID: 0}
+      amount: 0
+      player: {fileID: 0}
+    - AllowedItems: 
+      item:
+        Name: 
+        ID: -1
+        buffs: []
+        ItemPrefab: {fileID: 0}
+      amount: 0
+      player: {fileID: 0}
+    - AllowedItems: 
+      item:
+        Name: 
+        ID: -1
+        buffs: []
+        ItemPrefab: {fileID: 0}
+      amount: 0
+      player: {fileID: 0}
+    - AllowedItems: 
+      item:
+        Name: 
+        ID: -1
+        buffs: []
+        ItemPrefab: {fileID: 0}
+      amount: 0
+      player: {fileID: 0}
+    - AllowedItems: 
+      item:
+        Name: 
+        ID: -1
+        buffs: []
+        ItemPrefab: {fileID: 0}
+      amount: 0
+      player: {fileID: 0}
+  inventorySize: 32

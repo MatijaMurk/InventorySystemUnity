@@ -12,11 +12,13 @@ public abstract class UserInterface : MonoBehaviour
 
     protected Dictionary<GameObject, InventorySlot> _inventoryObjects = new Dictionary<GameObject, InventorySlot>();
 
-    
+    public PlayerModifications player;
   
  
     void Awake()
     {
+        MouseInfo.playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        if (MouseInfo.playerTransform == null) Debug.Log("Player not found!");
         
         for (int i = 0; i < inventory.GetItems.Length; i++)
         {
@@ -32,12 +34,12 @@ public abstract class UserInterface : MonoBehaviour
 
     }
 
-    private void Update()
-    {
-        // _inventoryObjects.UpdateSlotDisplay();
+    //private void Update()
+    //{
+    //    // _inventoryObjects.UpdateSlotDisplay();
 
-        Debug.Log(MouseInfo.hoverInterface);
-    }
+        
+    //}
 
 
     private void UpdateSlots(InventorySlot _slot)
@@ -90,9 +92,6 @@ public abstract class UserInterface : MonoBehaviour
         
         if (MouseInfo.itemInAir == null)
         {
-            MouseInfo.tempInfo = null;
-            MouseInfo.tempInfo = new GameObject();
-            MouseInfo.tempInfo = obj;
             MouseInfo.itemInAir = CreateTempItem(obj);
             //StartCoroutine(StartDrag());
         }
@@ -127,6 +126,14 @@ public abstract class UserInterface : MonoBehaviour
             Destroy(MouseInfo.itemInAir);
             if (MouseInfo.hoverInterface == null)
             {
+                if(_inventoryObjects[obj].ItemObject.data.ItemPrefab!=null)
+                {
+                for (int i = 0; i < _inventoryObjects[obj].amount; i++)
+                    {
+                    Instantiate(_inventoryObjects[obj].ItemObject.data.ItemPrefab, MouseInfo.playerTransform.position + MouseInfo.playerTransform.right * -2f +MouseInfo.playerTransform.up*Random.Range(-2f,2f), Quaternion.identity);
+                    }
+                
+                }               
                 _inventoryObjects[obj].RemoveItem();
                 return;
             }
@@ -136,33 +143,33 @@ public abstract class UserInterface : MonoBehaviour
                 InventorySlot mouseHoverSlotData = MouseInfo.hoverInterface._inventoryObjects[MouseInfo.hoveredSlot];
                 inventory.SwapItems(_inventoryObjects[obj], mouseHoverSlotData);
             }
-        
-        //if(MouseInfo.hoveredSlot==null && MouseInfo.hoverInterface != null)
+
+        //if (MouseInfo.hoveredSlot == null && MouseInfo.hoverInterface != null)
         //{
-        //    inventory.AddItem(, 1);
+        //    if (inventory.AddItem(MouseInfo.hoverInterface._inventoryObjects[obj].item, _inventoryObjects[obj].amount)){
+        //        return;
+        //        //_inventoryObjects[obj].RemoveItem();
+        //    }
         //}
     }
 
 
-    IEnumerator StartDrag()
-    {
-        while (MouseInfo.itemInAir)
-        {
-            MouseInfo.itemInAir.GetComponent<RectTransform>().position = Input.mousePosition;
-            yield return null;
-        }
+    //IEnumerator StartDrag()
+    //{
+    //    while (MouseInfo.itemInAir)
+    //    {
+    //        MouseInfo.itemInAir.GetComponent<RectTransform>().position = Input.mousePosition;
+    //        yield return null;
+    //    }
         
-    }
+    //}
 
     void OnDisable()
     {
         Destroy(MouseInfo.itemInAir);
     }
 
-    private void OnApplicationQuit()
-    {
-        inventory.Clear();
-    }
+  
 
 }
 public static class MouseInfo
@@ -171,26 +178,27 @@ public static class MouseInfo
     public static GameObject itemInAir;
     public static GameObject hoveredSlot;
     public static GameObject tempInfo;
+    public static Transform playerTransform;
 }
 
-public static class ExtensionMethods
-{
-    public static void UpdateSlotDisplay(this Dictionary<GameObject, InventorySlot> _slotsOnInterface)
-    {
-        foreach (KeyValuePair<GameObject, InventorySlot> _slot in _slotsOnInterface)
-        {
-            if (_slot.Value.item.ID >= 0)
-            {
-                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = _slot.Value.ItemObject.spriteUI;
-                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
-                _slot.Key.GetComponentInChildren<Text>().text = _slot.Value.amount == 1 ? "" : _slot.Value.amount.ToString("n0");
-            }
-            else
-            {
-                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = null;
-                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
-                _slot.Key.GetComponentInChildren<Text>().text = "";
-            }
-        }
-    }
-}
+//public static class ExtensionMethods
+//{
+//    public static void UpdateSlotDisplay(this Dictionary<GameObject, InventorySlot> _slotsOnInterface)
+//    {
+//        foreach (KeyValuePair<GameObject, InventorySlot> _slot in _slotsOnInterface)
+//        {
+//            if (_slot.Value.item.ID >= 0)
+//            {
+//                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = _slot.Value.ItemObject.spriteUI;
+//                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
+//                _slot.Key.GetComponentInChildren<Text>().text = _slot.Value.amount == 1 ? "" : _slot.Value.amount.ToString("n0");
+//            }
+//            else
+//            {
+//                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = null;
+//                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
+//                _slot.Key.GetComponentInChildren<Text>().text = "";
+//            }
+//        }
+//    }
+//}

@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteUI: {fileID: 6539532558383101501, guid: ba00d2cc9cfe3aa4dbabe584112b29a8, type: 3}
   stackable: 0
+  maxStack: 0
   type: 4
   description: 
   data:
     Name: Shield
-    ID: -1
+    ID: 3
     buffs:
     - attribute: 3
       value: 0
@@ -28,3 +29,4 @@ MonoBehaviour:
       value: 0
       min: 2
       max: 5
+    ItemPrefab: {fileID: 8743127317122354509, guid: fdbf76aba0f3e304a883696d01e998cb, type: 3}

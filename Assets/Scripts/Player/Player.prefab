@@ -112,7 +112,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 848721174686585883}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.1637178, y: 0.2598551, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -205,6 +205,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 11400000, guid: c4f499f230cf2614baa0ccf38b6f0087, type: 2}
+  equipment: {fileID: 11400000, guid: cc85d6a513e656b429f93b0d15a340f7, type: 2}
+  inventoryScreen: {fileID: 0}
+  equipScreen: {fileID: 0}
+  statsScreen: {fileID: 0}
+  itemsToSpawn:
+  - {fileID: 7549106898897910619, guid: ae44b9002b4bc8c408f8fbb2825157eb, type: 3}
+  - {fileID: 1278848520220437178, guid: 2e3b6a7888bef4643b1a36970d8b6143, type: 3}
+  - {fileID: 2059959701106481235, guid: cbf4edb469756d244a55a32fa665b3cc, type: 3}
+  - {fileID: 2627099138326903915, guid: 0becf604d38870e4ea20cb8d75914ce7, type: 3}
+  - {fileID: 1792495061261150282, guid: 48e69d7acd545f8499bb8ce0e4c373d6, type: 3}
+  - {fileID: 8722299180961069116, guid: fdbf76aba0f3e304a883696d01e998cb, type: 3}
+  - {fileID: 8981325180435083775, guid: 92125c6c07c619a43b5a0629159aa1d2, type: 3}
+  - {fileID: 8446720006083745496, guid: 227051a8226f71a448423c55f7ab004d, type: 3}
+  attributes:
+  - type: 0
+    value:
+      baseValue: 0
+      modifiedValue: 0
+  - type: 1
+    value:
+      baseValue: 0
+      modifiedValue: 0
+  - type: 2
+    value:
+      baseValue: 0
+      modifiedValue: 0
+  - type: 3
+    value:
+      baseValue: 0
+      modifiedValue: 0
+  - type: 4
+    value:
+      baseValue: 0
+      modifiedValue: 0
 --- !u!114 &848721174686585882
 MonoBehaviour:
   m_ObjectHideFlags: 0
